@@ -7,28 +7,28 @@
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,700i" rel="stylesheet">
 </head>
 <body>
-  <div class="startScreen">
+  <section class="startScreen">
     <h1>Snake</h1>
     <div class="imgContainer">
       <img src="./snake.jpg">
     </div>
     <div class="buttonContainer">
-      <div class="button">1 Player</div>
-      <div class="button">2 Player</div>
+      <div class="button" id="p1-menu">1 Player</div>
+      <div class="button" id="p2-menu">2 Player</div>
     </div>
-  </div>
-  <div class="p1Start">
+  </section>
+  <section class="p1Start">
     <h1>Snake</h1>
     <div>
       <h3>Enter Your Name</h3>
       <input type="text" value="Name">
       <br>
       <h3>Snake Color</h3>
-      <input type="color" value="#28bf31">
-      <div class="button">Start</div>
+      <input id="p1Color" type="color" value="#28bf31">
+      <div class="button" id="p1-start">Start</div>
     </div>
-  </div>
-  <div class="p2Start">
+  </section>
+  <section class="p2Start">
     <h1>Snake</h1>
     <div>
       <h2>Player 1</h2>
@@ -44,8 +44,8 @@
       <input type="color" value="#2a28bf">
       <div class="button">Start</div>
     </div>
-  </div>
-  <main>
+  </section>
+  <section class="main">
     <div class="players">
       <h2>Player 1</h2>
       <div class="name">
@@ -63,7 +63,15 @@
     <div class='highscore'>
       <h2>Highscores</h2>
     </div>
-  </main>
+    <div class="splashContainer">
+    <div class="oversplash">
+      <h2>Game Over!</h2>
+    </div>
+  </div>
+  </section>
+  <section class="gameover">
+    <h1>Game Over!</h1>
+  </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
   <script src="./app.js" charset="utf-8"></script>
 </body>

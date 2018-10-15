@@ -1,6 +1,24 @@
-//IMPORTANT ALEX!!!! THE SPECIAL FUNCTION REPEATS EVERYTIME THE GAME RESETS
+//TODO: IMPORTANT ALEX!!!! THE SPECIAL FUNCTION REPEATS EVERYTIME THE GAME RESETS
 //CANCEL IT AT THE START
 
+// By Rob: add a button event listener to change screen
+$('#p1-menu').click(() => {
+  bringToFront('p1Start');
+});
+
+$('#p2-menu').click(() => {
+  bringToFront('p2Start');
+});
+
+$('#p1-start').click(() => {
+  bringToFront('main');
+  loadGame();
+});
+
+function bringToFront(className) {
+  $(`.${className}`).css({ zIndex: 1 });
+  $(`section:not(.${className})`).css({ zIndex: -1 });
+}
 
 
 //Variables
@@ -12,6 +30,15 @@ const grid = [];
 const gridHeight = 20;
 const gridWidth = 20;
 let score = 0;
+
+function popDown(){
+  $('.splashContainer').hide();
+}
+
+function popUp(){
+  $('.splashContainer').show();
+}
+
 // const gridLimit = [];
 // let isGameRunning = false;
 // let isGamePaused = false;
@@ -79,6 +106,8 @@ function startGame(){
   // gameRefresh();
 }
 
+popDown();
+
 function gameRefresh(){
   $p1score.html('Score: ' + score);
   switch(snakeDirection) {
@@ -88,10 +117,10 @@ function gameRefresh(){
     case 'right': snakeX++; break;
   }
   if (snakeX < 0 || snakeY < 0 || snakeX >= gridWidth || snakeY >= gridHeight) {
-    startGame();
+    popUp();
   }
   if (grid[snakeY][snakeX].snake > 0) {
-    startGame();
+    popUp();
   }
   if (grid[snakeY][snakeX].apple === 1) {
     snakeLength++;
@@ -112,6 +141,8 @@ function gameRefresh(){
 
       if (pixel.snake > 0) {
         pixel.element.className = 'snake';
+        const color = document.getElementById('p1Color').value;
+        pixel.element.style.backgroundColor = color;
         pixel.snake -= 1;
       } else if (pixel.apple === 1){
         pixel.element.className = 'apple';
@@ -119,6 +150,7 @@ function gameRefresh(){
         pixel.element.className = 'special';
       } else {
         pixel.element.className = '';
+        pixel.element.style.backgroundColor = '';
       }
     }
   }
@@ -160,5 +192,3 @@ window.addEventListener('keydown', function(e) {
     snakeRight();
   }
 });
-
-loadGame();
