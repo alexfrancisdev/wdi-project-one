@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+main {
+  display: flex;
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+#grid {
+  width: calc(20*22px);
+  height: calc(20*22px);
+  margin: auto;
+}
+
+.snake {
+  background-color: rgb(40, 191, 49);
+  border: 2px solid rgb(17, 116, 30);
+}
+
+.apple {
+  background-color: rgb(201, 21, 21);
+}
+
+.special {
+  background-color: rgb(242, 255, 0);
+}
+
+#grid div {
+  height: 20px;
+  width: 20px;
+  float: left;
+  border: 1px solid black;
+  border-radius: 10%;
+}
