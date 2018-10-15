@@ -4,12 +4,89 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
+.startScreen {
+  padding-top: 5%;
+  height: -webkit-fill-available;
+  border-bottom: 5px solid black;
+}
+
+.startScreen h1 {
+  font-size: 80px;
+  margin: 5%;
+}
+
+.startScreen img {
+  height: 300px;
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5%;
+}
+
+.button {
+  height: 50px;
+  width: 200px;
+  background-color: grey;
+  border: 3px solid black;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.p1Start {
+  padding-top: 5%;
+  height: -webkit-fill-available;
+  border-bottom: 5px solid black;
+}
+
+.p1Start h1 {
+  font-size: 80px;
+  margin: 5%;
+}
+
+.p1Start div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.p1Start h3 {
+  font-size: 35px;
+}
+
+.p2Start {
+  padding-top: 5%;
+  height: -webkit-fill-available;
+  border-bottom: 5px solid black;
+}
+
+.p2Start h1 {
+  font-size: 80px;
+  margin: 5%;
+}
+
+.p2Start div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 h1 {
   text-align: center;
 }
 
 main {
   display: flex;
+  height: -webkit-fill-available;
 }
 
 .name {

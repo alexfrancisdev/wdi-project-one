@@ -21,8 +21,10 @@ let pixel = {};
 //Functions
 
 //DOM elements
-const $p1score = $('p1score');
-$p1score.html('test score');
+
+const $p1score = $('.p1score');
+$p1score.html('Score: ' + score);
+
 
 function loadGame() {
   const gameGrid = document.getElementById('grid');
@@ -78,6 +80,7 @@ function startGame(){
 }
 
 function gameRefresh(){
+  $p1score.html('Score: ' + score);
   switch(snakeDirection) {
     case 'up':    snakeY--; break;
     case 'down':  snakeY++; break;
@@ -93,14 +96,12 @@ function gameRefresh(){
   if (grid[snakeY][snakeX].apple === 1) {
     snakeLength++;
     score++;
-    console.log(score);
     grid[snakeY][snakeX].apple = 0;
     createApple();
     createSpecial();
   }
   if (grid[snakeY][snakeX].special === 1) {
     score = score + 3;
-    console.log('SPECIAL!');
     grid[snakeY][snakeX].special = 0;
   }
   grid[snakeY][snakeX].snake = snakeLength;
@@ -121,7 +122,7 @@ function gameRefresh(){
       }
     }
   }
-  setTimeout(gameRefresh, 1000/snakeLength);
+  setTimeout(gameRefresh, 1000/(snakeLength/2));
 }
 
 function snakeUp() {
@@ -149,7 +150,6 @@ function snakeLeft() {
 }
 
 window.addEventListener('keydown', function(e) {
-  console.log(e.which);
   if (e.which === 38) {
     snakeUp();
   } else if (e.which === 40) {

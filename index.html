@@ -7,17 +7,50 @@
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,700i" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>
-      Snake
-    </h1>
-  </header>
+  <div class="startScreen">
+    <h1>Snake</h1>
+    <div class="imgContainer">
+      <img src="./snake.jpg">
+    </div>
+    <div class="buttonContainer">
+      <div class="button">1 Player</div>
+      <div class="button">2 Player</div>
+    </div>
+  </div>
+  <div class="p1Start">
+    <h1>Snake</h1>
+    <div>
+      <h3>Enter Your Name</h3>
+      <input type="text" value="Name">
+      <br>
+      <h3>Snake Color</h3>
+      <input type="color" value="#28bf31">
+      <div class="button">Start</div>
+    </div>
+  </div>
+  <div class="p2Start">
+    <h1>Snake</h1>
+    <div>
+      <h2>Player 1</h2>
+      <h3>Enter Your Name</h3>
+      <input type="text" value="Name">
+      <h3>Snake Color</h3>
+      <input type="color" value="#28bf31">
+      <br>
+      <h2>Player 2</h2>
+      <h3>Enter Your Name</h3>
+      <input type="text" value="Name">
+      <h3>Snake Color</h3>
+      <input type="color" value="#2a28bf">
+      <div class="button">Start</div>
+    </div>
+  </div>
   <main>
     <div class="players">
       <h2>Player 1</h2>
       <div class="name">
-        <p id="p1name">Name</p>
-        <p id="p1score">Score</p>
+        <p class=""="p1name">Name</p>
+        <p class="p1score">Score</p>
       </div>
       <br>
       <h2>Player 2</h2>
@@ -28,8 +61,8 @@
     </div>
     <div id='grid'></div>
     <div class='highscore'>
-    <h2>Highscores</h2>
-  </div>
+      <h2>Highscores</h2>
+    </div>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
   <script src="./app.js" charset="utf-8"></script>
