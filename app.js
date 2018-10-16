@@ -32,6 +32,7 @@ $('#p2-menu').click(() => {
 $('#p1-start').click(() => {
   bringToFront('main');
   gameMode = '1player';
+  $('.p2info').hide();
   loadGame();
 });
 
@@ -55,8 +56,6 @@ function bringToFront(className) {
   $(`.${className}`).css({ zIndex: 1 });
   $(`section:not(.${className})`).css({ zIndex: -1 });
 }
-
-
 
 function popDown(){
   $('.splashContainer').hide();
@@ -84,6 +83,11 @@ $p1score.html('Score: ' + score);
 
 const $p2score = $('.p2score');
 $p2score.html('Score: ' + score2);
+
+const $p1name = $('.display-p1-name');
+$p1name.html('test name');
+
+const p1name = $('.p1name');
 
 
 function loadGame() {
@@ -168,6 +172,7 @@ popDown();
 function gameRefresh(){
   if(gameMode === '1player'){
     $p1score.html('Score: ' + score);
+    $p1name.html(JSON.stringify(p1name));
     switch(snakeDirection) {
       case 'up':    snakeY--; break;
       case 'down':  snakeY++; break;
@@ -197,7 +202,20 @@ function gameRefresh(){
       for (let x = 0; x < gridWidth; ++x) {
         const pixel = grid[y][x];
 
-        if (pixel.snake > 0) {
+        if (pixel.snake === snakeLength) {
+          if (snakeDirection === 'up'){
+            pixel.element.className = 'snakehead-up';
+          } else if (snakeDirection === 'down'){
+            pixel.element.className = 'snakehead-down';
+          } else if (snakeDirection === 'right'){
+            pixel.element.className = 'snakehead-right';
+          } else if (snakeDirection === 'left'){
+            pixel.element.className = 'snakehead-left';
+          }
+          const color = document.getElementById('color').value;
+          pixel.element.style.backgroundColor = color;
+          pixel.snake -= 1;
+        } else if (pixel.snake > 0) {
           pixel.element.className = 'snake';
           const color = document.getElementById('color').value;
           pixel.element.style.backgroundColor = color;
@@ -274,11 +292,39 @@ function gameRefresh(){
     for (let y = 0; y < gridHeight; ++y) {
       for (let x = 0; x < gridWidth; ++x) {
         const pixel = grid[y][x];
-        if (pixel.snake > 0) {
-          pixel.element.className = 'snake';
-          const pl1Color = document.getElementById('pl1Color').value;
-          pixel.element.style.backgroundColor = pl1Color;
+        //Coloring Snake 1
+        if (pixel.snake === snakeLength) {
+          if (snakeDirection === 'up'){
+            pixel.element.className = 'snakehead-up';
+          } else if (snakeDirection === 'down'){
+            pixel.element.className = 'snakehead-down';
+          } else if (snakeDirection === 'right'){
+            pixel.element.className = 'snakehead-right';
+          } else if (snakeDirection === 'left'){
+            pixel.element.className = 'snakehead-left';
+          }
+          const color = document.getElementById('pl1Color').value;
+          pixel.element.style.backgroundColor = color;
           pixel.snake -= 1;
+        } else if (pixel.snake > 0) {
+          pixel.element.className = 'snake';
+          const color = document.getElementById('pl1Color').value;
+          pixel.element.style.backgroundColor = color;
+          pixel.snake -= 1;
+          //Coloring snake 2
+        }else if (pixel.snake2 === snake2Length) {
+          if (snake2Direction === 'up'){
+            pixel.element.className = 'snakehead-up';
+          } else if (snake2Direction === 'down'){
+            pixel.element.className = 'snakehead-down';
+          } else if (snake2Direction === 'right'){
+            pixel.element.className = 'snakehead-right';
+          } else if (snake2Direction === 'left'){
+            pixel.element.className = 'snakehead-left';
+          }
+          const pl2Color = document.getElementById('pl2Color').value;
+          pixel.element.style.backgroundColor = pl2Color;
+          pixel.snake2 -= 1;
         }else if (pixel.snake2 > 0) {
           pixel.element.className = 'snake2';
           const pl2Color = document.getElementById('pl2Color').value;
@@ -301,6 +347,7 @@ function gameRefresh(){
 function snakeUp() {
   if (snakeDirection !== 'down') {
     snakeDirection = 'up';
+    pixel.element.style.transform='rotate(0deg)';
   }
 }
 
@@ -313,6 +360,7 @@ function snake2Up() {
 function snakeDown() {
   if (snakeDirection !== 'up') {
     snakeDirection = 'down';
+    pixel.element.style.transform='rotate(180deg)';
   }
 }
 

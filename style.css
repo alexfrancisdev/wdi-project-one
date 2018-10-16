@@ -4,6 +4,10 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
+body {
+    background-image: url("apple.png");
+}
+
 h1 {
   font-size: 80px;
   margin: 5%;
@@ -97,11 +101,13 @@ h1 {
 
 .players {
   margin-top: 20%;
+  margin-left: 3%;
   width: 20%;
 }
 
 .highscore {
   margin-top: 20%;
+  margin-right: 3%;
   width: 20%;
 }
 
@@ -149,8 +155,29 @@ h1 {
   background-color: rgb(18, 33, 240);
 }
 
+.snakehead-up{
+  background-image: url("snakehead.png");
+  transform: rotate(0deg);
+}
+
+.snakehead-down{
+  background-image: url("snakehead.png");
+  transform: rotate(180deg);
+}
+
+.snakehead-left{
+  background-image: url("snakehead.png");
+  transform: rotate(270deg);
+}
+
+.snakehead-right{
+  background-image: url("snakehead.png");
+  transform: rotate(90deg);
+}
+
 .apple {
-  background-color: rgb(201, 21, 21);
+  background-image: url("apple.png");
+  /* background-color: rgb(201, 21, 21); */
 }
 
 .special {
