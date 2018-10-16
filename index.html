@@ -35,14 +35,14 @@
       <h3>Enter Your Name</h3>
       <input type="text" value="Name">
       <h3>Snake Color</h3>
-      <input type="color" value="#28bf31">
+      <input id="pl1Color" type="color" value="#28bf31">
       <br>
       <h2>Player 2</h2>
       <h3>Enter Your Name</h3>
       <input type="text" value="Name">
       <h3>Snake Color</h3>
-      <input type="color" value="#2a28bf">
-      <div class="button">Start</div>
+      <input id="pl2color" type="color" value="#2a28bf">
+      <div class="button" id="p2-start">Start</div>
     </div>
   </section>
   <section class="main">
@@ -66,6 +66,11 @@
     <div class="splashContainer">
     <div class="oversplash">
       <h2>Game Over!</h2>
+      <p id="splashMsg">Oh no! You crashed!</p>
+      <div>
+        <div class="button" id="playAgain">Play Again</div>
+        <div class="button">Exit</div>
+      </div>
     </div>
   </div>
   </section>

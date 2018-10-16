@@ -55,7 +55,6 @@ section:not(.startScreen) {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  margin-top: 10%;
 }
 
 .p1Start {
@@ -143,6 +142,11 @@ h1 {
   /* visibility: hidden; */
 }
 
+.oversplash div {
+  display: flex;
+  justify-content: space-around;
+}
+
 .name {
   display: flex;
   justify-content: space-between;
@@ -158,6 +162,10 @@ h1 {
 .snake {
   background-color: rgb(40, 191, 49);
   border: 2px solid rgb(17, 116, 30);
+}
+
+.snake2 {
+  background-color: rgb(18, 33, 240);
 }
 
 .apple {
