@@ -10,7 +10,7 @@ let snake2X;
 let snake2Y;
 let snake2Length;
 let snake2Direction;
-let refreshPaused;
+// let refreshPaused;
 let gameMode;
 const grid = [];
 const gridHeight = 20;
@@ -39,6 +39,16 @@ $('#p2-start').click(() => {
   bringToFront('main');
   gameMode = '2player';
   loadGame();
+});
+
+$('#return-to-start1').click(() => {
+  console.log('return clicked');
+  bringToFront('startScreen');
+});
+
+$('#return-to-start2').click(() => {
+  console.log('return clicked');
+  bringToFront('startScreen');
 });
 
 function bringToFront(className) {
@@ -189,7 +199,7 @@ function gameRefresh(){
 
         if (pixel.snake > 0) {
           pixel.element.className = 'snake';
-          const color = document.getElementById('p1Color').value;
+          const color = document.getElementById('color').value;
           pixel.element.style.backgroundColor = color;
           pixel.snake -= 1;
         } else if (pixel.apple === 1){
@@ -266,13 +276,13 @@ function gameRefresh(){
         const pixel = grid[y][x];
         if (pixel.snake > 0) {
           pixel.element.className = 'snake';
-          // const color = document.getElementById('pl1Color').value;
-          // pixel.element.style.backgroundColor = color;
+          const pl1Color = document.getElementById('pl1Color').value;
+          pixel.element.style.backgroundColor = pl1Color;
           pixel.snake -= 1;
         }else if (pixel.snake2 > 0) {
           pixel.element.className = 'snake2';
-          // const color2 = document.getElementById('pl2Color').value;
-          // pixel.element.style.backgroundColor = color2;
+          const pl2Color = document.getElementById('pl2Color').value;
+          pixel.element.style.backgroundColor = pl2Color;
           pixel.snake2 -= 1;
         } else if (pixel.apple === 1){
           pixel.element.className = 'apple';

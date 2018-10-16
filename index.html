@@ -24,8 +24,11 @@
       <input type="text" value="Name">
       <br>
       <h3>Snake Color</h3>
-      <input id="p1Color" type="color" value="#28bf31">
-      <div class="button" id="p1-start">Start</div>
+      <input id="color" type="color" value="#28bf31">
+      <div class="buttonContainer" style="display: flex; flex-direction: row; margin: 10px">
+        <div class="button" id="p1-start">Start</div>
+        <div class="button" id="return-to-start1">Return</div>
+      </div>
     </div>
   </section>
   <section class="p2Start">
@@ -41,8 +44,13 @@
       <h3>Enter Your Name</h3>
       <input type="text" value="Name">
       <h3>Snake Color</h3>
-      <input id="pl2color" type="color" value="#2a28bf">
-      <div class="button" id="p2-start">Start</div>
+      <input id="pl2Color" type="color" value="#2a28bf">
+      <div>
+        <div class="buttonContainer" style="display: flex; flex-direction: row; margin: 10px">
+          <div class="button" id="p2-start">Start</div>
+          <div class="button" id="return-to-start2">Return</div>
+        </div>
+      </div>
     </div>
   </section>
   <section class="main">
@@ -64,15 +72,15 @@
       <h2>Highscores</h2>
     </div>
     <div class="splashContainer">
-    <div class="oversplash">
-      <h2>Game Over!</h2>
-      <p id="splashMsg">Oh no! You crashed!</p>
-      <div>
-        <div class="button" id="playAgain">Play Again</div>
-        <div class="button">Exit</div>
+      <div class="oversplash">
+        <h2>Game Over!</h2>
+        <p id="splashMsg">Oh no! You crashed!</p>
+        <div>
+          <div class="button" id="playAgain">Play Again</div>
+          <div class="button">Exit</div>
+        </div>
       </div>
     </div>
-  </div>
   </section>
   <section class="gameover">
     <h1>Game Over!</h1>
