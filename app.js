@@ -52,6 +52,33 @@ $('#return-to-start2').click(() => {
   bringToFront('startScreen');
 });
 
+$('#playAgain').click(() => {
+  popDown();
+  for (let y = 0; y < gridHeight; ++y) {
+    for (let x = 0; x < gridWidth; ++x) {
+      grid[y][x].snake = 0;
+      grid[y][x].apple = 0;
+      grid[y][x].special = 0;
+      grid[y][x].snake2 = 0;
+    }
+  }
+  snakeX = 8;
+  snakeY = 8;
+  snakeLength = 4;
+  snakeDirection = 'right';
+  score = 0;
+  if(gameMode === '2player'){
+    snake2X = 10;
+    snake2Y = 4;
+    snake2Length = 4;
+    snake2Direction = 'left';
+    score2 = 0;
+  }
+  createApple();
+  createSpecial();
+  gameRefresh();
+});
+
 function bringToFront(className) {
   $(`.${className}`).css({ zIndex: 1 });
   $(`section:not(.${className})`).css({ zIndex: -1 });
@@ -104,8 +131,8 @@ function loadGame() {
     }
     grid.push(row);
   }
-  startGame();
-  gameRefresh();
+  setTimeout(startGame, 1000);
+  setTimeout(gameRefresh, 1000);
 }
 
 function createApple() {

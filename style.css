@@ -13,6 +13,10 @@ h1 {
   margin: 5%;
 }
 
+h2 {
+  font-size: 35px;
+}
+
 section {
   position: absolute;
   width: 100vw;
@@ -36,11 +40,37 @@ section:not(.startScreen) {
 
 .startScreen img {
   height: 300px;
+  animation: shake 1.5s infinite;
 }
 
 .imgContainer {
   display: flex;
   justify-content: center;
+}
+
+@keyframes shake {
+  from,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
 }
 
 
@@ -121,7 +151,7 @@ h1 {
   width: 30%;
   position: fixed;
   left:35%;
-  top:300px;
+  top:20%;
   background-color: red;
   text-align: center;
   border-radius: 20px;
@@ -143,7 +173,7 @@ h1 {
 #grid {
   width: calc(20*22px);
   height: calc(20*22px);
-  margin: auto;
+  margin-top: 5%;
 }
 
 .snake {
@@ -181,7 +211,35 @@ h1 {
 }
 
 .special {
-  background-color: rgb(242, 255, 0);
+  background-image: url('banana.png');
+  animation: flashy 3s infinite;
+}
+
+@keyframes flashy {
+  0% {
+    background-color: red;
+  }
+  15% {
+    background-color: orange;
+  }
+  30% {
+    background-color: yellow;
+  }
+  45% {
+    background-color: green;
+  }
+  60% {
+    background-color: blue;
+  }
+  75%{
+    background-color: indigo;
+  }
+  90%{
+    background-colour: violet;
+  }
+  100% {
+    background-color: red;
+  }
 }
 
 #grid div {
@@ -217,4 +275,20 @@ h1 {
   font-weight: 600;
   cursor: pointer;
   margin: 10px;
+}
+
+.button:hover {
+  animation: bold 2s infinite;
+}
+
+@keyframes bold {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  to {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
 }
