@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,700i" rel="stylesheet">
 </head>
-<body>
+<body onload="menuSound.play()";>
   <section class="startScreen" style="background-color: black;">
     <h1 class="vectro">
       <span class="vectro-body">SNAKE</span>
@@ -38,7 +38,7 @@
     </div>
     <div class="buttonContainer" style="display: flex; flex-direction: row; margin: 10px">
       <div class="button" id="p1-start">Start</div>
-      <div class="button return" id="return-to-start1">Return</div>
+      <div class="button" id="return-to-start1">Return</div>
     </div>
   </section>
   <section class="p2Start">
@@ -107,8 +107,10 @@
   <h1>Game Over!</h1>
   <div class="button">Main Menu</div>
 </section>
-<footer>Made with ❤️ by Alex</footer>
+<footer>Made with <img src="pixel-heart.png" height="25"> by Alex</footer>
+<audio id="introSound" src="intro.wav"></audio>
 <audio id="menuSound" src="menu.mp3"></audio>
+<audio id="returnSound" src="return.wav"></audio>
 <audio id="deathSound" src="die-sound.mp3"></audio>
 <audio id="startSound" src="gamestart.ogg"></audio>
 <audio id="bananaSound" src="banana.wav"></audio>

@@ -24,8 +24,11 @@ const bananaSound = document.getElementById('bananaSound');
 const startSound = document.getElementById('startSound');
 const eatingSound = document.getElementById('eatingSound');
 const menuSound = document.getElementById('menuSound');
+const returnSound = document.getElementById('returnSound');
+const introSound = document.getElementById('introSound');
 
 // By Rob: add a button event listener to change screen
+
 $('#p1-menu').click(() => {
   bringToFront('p1Start');
   menuSound.play();
@@ -40,6 +43,7 @@ $('#p1-start').click(() => {
   bringToFront('main');
   gameMode = '1player';
   $('.p2info').hide();
+  introSound.pause();
   startSound.play();
   loadGame();
 });
@@ -47,18 +51,19 @@ $('#p1-start').click(() => {
 $('#p2-start').click(() => {
   bringToFront('main');
   gameMode = '2player';
+  introSound.pause();
   startSound.play();
   loadGame();
 });
 
 $('#return-to-start1').click(() => {
   bringToFront('startScreen');
-  menuSound.play();
+  returnSound.play();
 });
 
 $('#return-to-start2').click(() => {
   bringToFront('startScreen');
-  menuSound.play();
+  returnSound.play();
 });
 
 $('#p1exit').click(() => {
@@ -95,6 +100,7 @@ $('#playAgain').click(() => {
 function bringToFront(className) {
   $(`.${className}`).css({ zIndex: 1 });
   $(`section:not(.${className})`).css({ zIndex: -1 });
+  $('footer').css({zIndex: 1});
 }
 
 function popDown(){
@@ -452,12 +458,16 @@ function snake2Left() {
 
 window.addEventListener('keydown', function(e) {
   if (e.which === 38) {
+    e.preventDefault();
     snakeUp();
   } else if (e.which === 40) {
+    e.preventDefault();
     snakeDown();
   } else if (e.which === 37) {
+    e.preventDefault();
     snakeLeft();
   } else if (e.which === 39) {
+    e.preventDefault();
     snakeRight();
   } else if (e.which === 87) {
     snake2Up();

@@ -513,7 +513,14 @@ h1 {
   align-items: center;
 }
 
-.return:hover {
+#return-to-start1:hover {
+  box-shadow: 0 0 20px #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+#return-to-start2:hover {
   box-shadow: 0 0 20px #ff0000;
   text-shadow: 0 0 10px #ff0000;
   transition: all .4s ease;
