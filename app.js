@@ -19,37 +19,50 @@ let score = 0;
 let score2 = 0;
 const $splashMessage = $('#splashMsg');
 const $playAgain = $('#playAgain');
+const deathSound = document.getElementById('deathSound');
+const bananaSound = document.getElementById('bananaSound');
+const startSound = document.getElementById('startSound');
+const eatingSound = document.getElementById('eatingSound');
+const menuSound = document.getElementById('menuSound');
 
 // By Rob: add a button event listener to change screen
 $('#p1-menu').click(() => {
   bringToFront('p1Start');
+  menuSound.play();
 });
 
 $('#p2-menu').click(() => {
   bringToFront('p2Start');
+  menuSound.play();
 });
 
 $('#p1-start').click(() => {
   bringToFront('main');
   gameMode = '1player';
   $('.p2info').hide();
+  startSound.play();
   loadGame();
 });
 
 $('#p2-start').click(() => {
   bringToFront('main');
   gameMode = '2player';
+  startSound.play();
   loadGame();
 });
 
 $('#return-to-start1').click(() => {
-  console.log('return clicked');
   bringToFront('startScreen');
+  menuSound.play();
 });
 
 $('#return-to-start2').click(() => {
-  console.log('return clicked');
   bringToFront('startScreen');
+  menuSound.play();
+});
+
+$('#p1exit').click(() => {
+  bringToFront('gameover');
 });
 
 $('#playAgain').click(() => {
@@ -89,8 +102,9 @@ function popDown(){
 }
 
 function popUp(){
+  deathSound.play();
   $('.splashContainer').show();
-  $splashMessage.html('Congratulations, you scored ' + score + ' points!');
+  // $splashMessage.html('Congratulations, you scored ' + score + ' points!');
 }
 
 $playAgain.click(console.log('reset clicked'));
@@ -198,6 +212,7 @@ popDown();
 
 function gameRefresh(){
   if(gameMode === '1player'){
+    $p1score.css('color', document.getElementById('color').value);
     $p1score.html('Score: ' + score);
     $p1name.html(JSON.stringify(p1name));
     switch(snakeDirection) {
@@ -207,9 +222,11 @@ function gameRefresh(){
       case 'right': snakeX++; break;
     }
     if (snakeX < 0 || snakeY < 0 || snakeX >= gridWidth || snakeY >= gridHeight) {
+      deathSound.play();
       popUp();
     }
     if (grid[snakeY][snakeX].snake > 0) {
+      deathSound.play();
       popUp();
     }
     if (grid[snakeY][snakeX].apple === 1) {
@@ -218,10 +235,12 @@ function gameRefresh(){
       grid[snakeY][snakeX].apple = 0;
       createApple();
       createSpecial();
+      eatingSound.play();
     }
     if (grid[snakeY][snakeX].special === 1) {
       score = score + 3;
       grid[snakeY][snakeX].special = 0;
+      bananaSound.play();
     }
     grid[snakeY][snakeX].snake = snakeLength;
 
@@ -260,6 +279,8 @@ function gameRefresh(){
     setTimeout(gameRefresh, 1000/(snakeLength/2));
     //2 Players
   } else {
+    $p1score.css('color', document.getElementById('pl1Color').value);
+    $p2score.css('color', document.getElementById('pl2Color').value);
     $p1score.html('Score: ' + score);
     $p2score.html('Score: ' + score2);
     switch(snakeDirection) {
@@ -275,19 +296,23 @@ function gameRefresh(){
       case 'right': snake2X++; break;
     }
     if (snakeX < 0 || snakeY < 0 || snakeX >= gridWidth || snakeY >= gridHeight) {
-      console.log('Player 2 wins!');
+      $('#gameover').html('Player 2 Wins!');
+      $('#splashMsg').html('Their score is ' + score2);
       popUp();
     }
     if (grid[snakeY][snakeX].snake > 0 || grid[snakeY][snakeX].snake2) {
-      console.log('Player 2 wins!');
+      $('#gameover').html('Player 2 Wins!');
+      $('#splashMsg').html('Their score is ' + score2);
       popUp();
     }
     if (snake2X < 0 || snake2Y < 0 || snake2X >= gridWidth || snake2Y >= gridHeight) {
-      console.log('Player 1 wins!');
+      $('#gameover').html('Player 1 Wins!');
+      $('#splashMsg').html('Their score is ' + score);
       popUp();
     }
     if (grid[snake2Y][snake2X].snake > 0 || grid[snake2Y][snake2X].snake2) {
-      console.log('Player 1 wins!');
+      $('#gameover').html('Player 1 Wins!');
+      $('#splashMsg').html('Their score is ' + score);
       popUp();
     }
     if (grid[snakeY][snakeX].apple === 1) {
@@ -296,6 +321,7 @@ function gameRefresh(){
       grid[snakeY][snakeX].apple = 0;
       createApple();
       createSpecial();
+      eatingSound.play();
     }
     if (grid[snake2Y][snake2X].apple === 1) {
       snake2Length++;
@@ -304,14 +330,17 @@ function gameRefresh(){
       grid[snake2Y][snake2X].apple = 0;
       createApple();
       createSpecial();
+      eatingSound.play();
     }
     if (grid[snakeY][snakeX].special === 1) {
       score = score + 3;
       grid[snakeY][snakeX].special = 0;
+      bananaSound.play();
     }
     if (grid[snake2Y][snake2X].special === 1) {
       score2 = score2 + 3;
       grid[snake2Y][snake2X].special = 0;
+      bananaSound.play();
     }
     grid[snakeY][snakeX].snake = snakeLength;
     grid[snake2Y][snake2X].snake2 = snake2Length;
@@ -436,9 +465,7 @@ window.addEventListener('keydown', function(e) {
     snake2Down();
   } else if (e.which === 65) {
     snake2Left();
-    console.log('snake 2 left');
   } else if (e.which === 68) {
     snake2Right();
-    console.log('snake 2 right');
   }
 });

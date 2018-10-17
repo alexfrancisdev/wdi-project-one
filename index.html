@@ -4,90 +4,116 @@
   <meta charset="utf-8">
   <title>Snake</title>
   <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,700i" rel="stylesheet">
 </head>
 <body>
-  <section class="startScreen">
-    <h1>Snake</h1>
-    <div class="imgContainer">
-      <img src="./snake.jpg">
-    </div>
+  <section class="startScreen" style="background-color: black;">
+    <h1 class="vectro">
+      <span class="vectro-body">SNAKE</span>
+      <span class="vectro-red">I</span>
+      <span class="vectro-green">I</span>
+      <span class="vectro-blue">I</span>
+    </h1>
     <div class="buttonContainer">
       <div class="button" id="p1-menu">1 Player</div>
       <div class="button" id="p2-menu">2 Player</div>
     </div>
+    <div class="bottom"></div>
   </section>
   <section class="p1Start">
-    <h1>Snake</h1>
-    <div>
-      <!-- <h3>Enter Your Name</h3> -->
-      <!-- <input class="p1name" type="text" value="Name"> -->
-      <br>
-      <h3>Snake Color</h3>
-      <input id="color" type="color" value="#28bf31">
-      <div class="buttonContainer" style="display: flex; flex-direction: row; margin: 10px">
-        <div class="button" id="p1-start">Start</div>
-        <div class="button" id="return-to-start1">Return</div>
+    <h1 class="vectro">
+      <span class="vectro-body">SNAKE</span>
+      <span class="vectro-red">I</span>
+      <span class="vectro-green">I</span>
+      <span class="vectro-blue">I</span>
+    </h1>
+    <div class="player-container">
+      <div class="left">
+        <h2>Player 1</h2>
+        <h3>Pick Snake Color</h3>
+        <p>(Use the arrow keys to control your snake)</p>
+        <input id="color" type="color" value="#28bf31">
       </div>
+    </div>
+    <div class="buttonContainer" style="display: flex; flex-direction: row; margin: 10px">
+      <div class="button" id="p1-start">Start</div>
+      <div class="button return" id="return-to-start1">Return</div>
     </div>
   </section>
   <section class="p2Start">
-    <h1>Snake</h1>
-    <div>
-      <h2>Player 1</h2>
-      <!-- <h3>Enter Your Name</h3> -->
-      <!-- <input type="text" value="Name"> -->
-      <h3>Snake Color</h3>
-      <input id="pl1Color" type="color" value="#28bf31">
-      <br>
-      <h2>Player 2</h2>
-      <!-- <h3>Enter Your Name</h3>
-      <input type="text" value="Name"> -->
-      <h3>Snake Color</h3>
-      <input id="pl2Color" type="color" value="#2a28bf">
-      <div>
-        <div class="buttonContainer" style="display: flex; flex-direction: row; margin: 10px">
-          <div class="button" id="p2-start">Start</div>
-          <div class="button" id="return-to-start2">Return</div>
-        </div>
+    <h1 class="vectro">
+      <span class="vectro-body">SNAKE</span>
+      <span class="vectro-red">I</span>
+      <span class="vectro-green">I</span>
+      <span class="vectro-blue">I</span>
+    </h1>
+    <div class="player-container">
+      <div class="left">
+        <h2>Player 1</h2>
+        <p>(Use the arrow keys to control your snake)</p>
+        <h3>Pick Snake Color</h3>
+        <input id="pl1Color" type="color" value="#28bf31">
       </div>
-    </div>
-  </section>
-  <section class="main">
-    <div class="players">
-      <h2>Player 1</h2>
-      <div class="name">
-        <!-- <p class="display-p1-name">Name</p> -->
-        <p class="p1score">Score</p>
-      </div>
-      <br>
-      <div class="p2info">
+      <div class="right">
         <h2>Player 2</h2>
-        <div class="name">
-          <!-- <p class="display-p2-name">Name</p> -->
-          <p class="p2score">Score</p>
-        </div>
+        <p>(Use the WASD keys to control your snake)</p>
+        <h3>Pick Snake Color</h3>
+        <input id="pl2Color" type="color" value="#2a28bf">
       </div>
     </div>
+    <div>
+      <div class="buttonContainer" style="display: flex; flex-direction: row; margin: 10px">
+        <div class="button" id="p2-start">Start</div>
+        <div class="return button" id="return-to-start2">Return</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="main">
+  <div class="players">
+    <h2>Player 1</h2>
+    <div class="name">
+      <!-- <p class="display-p1-name">Name</p> -->
+      <p class="p1score">Score</p>
+    </div>
+    <br>
+    <div class="p2info">
+      <h2>Player 2</h2>
+      <div class="name">
+        <!-- <p class="display-p2-name">Name</p> -->
+        <p class="p2score">Score</p>
+      </div>
+    </div>
+  </div>
+  <div class="grid-container">
     <div id='grid'></div>
-    <div class='highscore'>
-      <h2>Highscores</h2>
-    </div>
-    <div class="splashContainer">
-      <div class="oversplash">
-        <h2>Game Over!</h2>
-        <p id="splashMsg">Oh no! You crashed!</p>
-        <div>
-          <div class="button" id="playAgain">Play Again</div>
-          <div class="button">Exit</div>
-        </div>
+  </div>
+  <div class='highscore'>
+    <h2>Highscores</h2>
+  </div>
+  <div class="splashContainer">
+    <div class="oversplash">
+      <h2 id="gameover">Game Over!</h2>
+      <p id="splashMsg">Oh no! You crashed!</p>
+      <div>
+        <div class="button" id="playAgain">Play Again</div>
+        <div class="button" id="p1exit">Exit</div>
       </div>
     </div>
-  </section>
-  <section class="gameover">
-    <h1>Game Over!</h1>
-  </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
-  <script src="./app.js" charset="utf-8"></script>
+  </div>
+</section>
+<section class="gameover">
+  <h1>Game Over!</h1>
+  <div class="button">Main Menu</div>
+</section>
+<footer>Made with ❤️ by Alex</footer>
+<audio id="menuSound" src="menu.mp3"></audio>
+<audio id="deathSound" src="die-sound.mp3"></audio>
+<audio id="startSound" src="gamestart.ogg"></audio>
+<audio id="bananaSound" src="banana.wav"></audio>
+<audio id="eatingSound" src="eating.wav"></audio>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+<script src="./app.js" charset="utf-8"></script>
 </body>
 </html>
