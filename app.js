@@ -29,6 +29,18 @@ const introSound = document.getElementById('introSound');
 
 // By Rob: add a button event listener to change screen
 
+let executed = false;
+function loadMusic() {
+  if (!executed) {
+    introSound.play();
+    executed = true;
+  }
+}
+
+$('body').click(() => {
+  loadMusic();
+});
+
 $('#p1-menu').click(() => {
   bringToFront('p1Start');
   menuSound.play();
@@ -43,16 +55,16 @@ $('#p1-start').click(() => {
   bringToFront('main');
   gameMode = '1player';
   $('.p2info').hide();
-  introSound.pause();
   startSound.play();
+  introSound.pause();
   loadGame();
 });
 
 $('#p2-start').click(() => {
   bringToFront('main');
   gameMode = '2player';
-  introSound.pause();
   startSound.play();
+  introSound.pause();
   loadGame();
 });
 
@@ -68,6 +80,11 @@ $('#return-to-start2').click(() => {
 
 $('#p1exit').click(() => {
   bringToFront('gameover');
+});
+
+$('#mainmenu').click(() => {
+  bringToFront('startScreen');
+  introSound.play();
 });
 
 $('#playAgain').click(() => {
@@ -86,8 +103,8 @@ $('#playAgain').click(() => {
   snakeDirection = 'right';
   score = 0;
   if(gameMode === '2player'){
-    snake2X = 10;
-    snake2Y = 4;
+    snake2X = 15;
+    snake2Y = 15;
     snake2Length = 4;
     snake2Direction = 'left';
     score2 = 0;
@@ -189,13 +206,13 @@ function startGame(){
     createApple();
     createSpecial();
   } else {
-    snakeX = 8;
-    snakeY = 8;
+    snakeX = 4;
+    snakeY = 4;
     snakeLength = 4;
     snakeDirection = 'right';
     score = 0;
-    snake2X = 10;
-    snake2Y = 4;
+    snake2X = 15;
+    snake2Y = 15;
     snake2Length = 4;
     snake2Direction = 'left';
     score2 = 0;
