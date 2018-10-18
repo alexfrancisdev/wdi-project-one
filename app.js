@@ -84,6 +84,7 @@ $('#p1exit').click(() => {
 
 $('#mainmenu').click(() => {
   bringToFront('startScreen');
+  popDown();
   introSound.play();
 });
 
