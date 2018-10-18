@@ -1,27 +1,555 @@
-* {
-  margin: 0;
-  padding: 0;
+
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+
+section {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+.startScreen *{
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+body { background: #000; color: #fff; position: relative;}
+
+section:not(.startScreen) {
+  z-index: -1;
+}
+
+.startScreen {
+  background-color: black;
+  height: 100ph;
+  /* background: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, rgba(255,255,255,0) 1px, rgba(255,255,255,0) 2px); */
+}
+
+.vectro {
+  position: relative;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.1px #f1f1f1;
+  font-family: 'Righteous', cursive;
+  font-size: 140px;
+  margin: 10px 0 50px 0;
+}
+
+.vectro:after {
+  content: '';
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, rgba(255,255,255,0) 1px, rgba(255,255,255,0) 2px);
+}
+
+.vectro-body {
+  -webkit-background-clip: text;
+  background-image: -webkit-linear-gradient(#C3BFB4 0%, #FDFCFA 50%, #E8E7E5 51%, #757172 52%, #E8E9DB 100%);
+  -webkit-filter: drop-shadow(2px 2px 15px #3F59F4);
+}
+
+.vectro-red {
+  color: #F10C20;
+  -webkit-text-fill-color: #F10C20;
+  -webkit-text-stroke: 0;
+  -webkit-filter: drop-shadow(2px 2px 15px #F10C20);
+  font-style: italic;
+}
+
+.windows .vectro-red {
+  padding-right: 30px;
+}
+
+.vectro-green {
+  color: #6BFF2B;
+  -webkit-text-fill-color: #6BFF2B;
+  -webkit-filter: drop-shadow(2px 2px 15px #6BFF2B);
+  -webkit-text-stroke: 0;
+  font-style: italic;
+  margin-left: -20px;
+}
+
+.windows .vectro-green {
+  padding-right: 30px;
+  margin-left: -30px;
+}
+
+.vectro-blue {
+  color: #3F59F4;
+  -webkit-text-fill-color: #3F59F4;
+  -webkit-filter: drop-shadow(2px 2px 15px #3F59F4);
+  -webkit-text-stroke: 0;
+  font-style: italic;
+  padding-right: 20px;
+  margin-left: -20px;
+}
+
+.windows .vectro-blue {
+  padding-right: 30px;
+  margin-left: -30px;
+}
+
+.startScreen .buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.startScreen .buttonContainer .button {
+  box-shadow: 0 0 20px #3F59F4;
+  text-shadow: 0 0 10px #3F59F4;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-family: 'Press Start 2P', cursive;
+  justify-content: center;
+  height: 50px;
+  width: 200px;
+  background-color: ;
+  border: 3px solid white;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 20px;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+.startScreen .buttonContainer .button:hover {
+  box-shadow: 0 0 20px #6BFF2B;
+  text-shadow: 0 0 10px #6BFF2B;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+
+}
+
+.p1Start * {
+  animation: fadeIn 0.7s 1;
+}
+
+.p1Start {
+  animation: fadeIn 0.7s 1;
+  height: -webkit-fill-available;
+  border-bottom: 5px solid black;
+  text-align: center;
+  align-items: center;
+}
+
+.p1Start div p {
+  font-weight: normal;
+  color: grey;
+}
+
+.p1Start h2 {
+  font-size: 35px;
+}
+
+.p1Start h3 {
+  font-size: 20px;
+}
+
+.p1Start .buttonContainer {
+  justify-content: center;
+}
+
+.p1Start .buttonContainer .button {
+  box-shadow: 0 0 20px #3F59F4;
+  text-shadow: 0 0 10px #3F59F4;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-family: 'Press Start 2P', cursive;
+  justify-content: center;
+  height: 50px;
+  width: 200px;
+  background-color: ;
+  border: 3px solid white;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 6%;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+.p1Start .buttonContainer .button:hover {
+  box-shadow: 0 0 20px #6BFF2B;
+  text-shadow: 0 0 10px #6BFF2B;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+.p2Start * {
+  animation: fadeIn 0.7s 1;
+}
+
+.p2Start {
+  height: -webkit-fill-available;
+  border-bottom: 5px solid black;
+}
+
+.player-container {
+  display: flex;
+  justify-content: center;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+.player-container div:hover {
+  box-shadow: 0 0 50px #3F59F4;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+.left {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid white;
+  box-shadow: 0 0 20px #3F59F4;
+  text-shadow: 0 0 0.2px white;
+  border-radius: 5px;
+  padding: 0 30px 30px 30px;
+  margin-right: 3%;
+  text-align: center;
+  align-items: center;
+}
+
+.left h2 {
+  margin-bottom: 10px;
+}
+
+.right {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid white;
+  box-shadow: 0 0 20px #3F59F4;
+  text-shadow: 0 0 0.2px white;
+  border-radius: 5px;
+  padding: 0 30px 30px 30px;
+  margin-left: 3%;
+}
+
+.right h2 {
+  margin-bottom: 10px;
+}
+
+.p2Start h2 {
+  font-size: 35px;
+}
+
+.p2Start h3 {
+  font-size: 25px;
+  margin-top: 5px;
+}
+
+.p2Start div {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.p2Start .buttonContainer .button {
+  box-shadow: 0 0 20px #3F59F4;
+  text-shadow: 0 0 10px #3F59F4;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-family: 'Press Start 2P', cursive;
+  justify-content: center;
+  height: 50px;
+  width: 200px;
+  background-color: ;
+  border: 3px solid white;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 6%;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+.p2Start .buttonContainer .button:hover {
+  box-shadow: 0 0 20px #6BFF2B;
+  text-shadow: 0 0 10px #6BFF2B;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+
+}
+
+.return:hover {
+  box-shadow: 0 0 20px #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+.p2Start div {
+  display: flex;
+  align-items: center;
+}
+
+.p2Start div p {
+  font-weight: normal;
+  color: grey;
 }
 
 h1 {
   text-align: center;
 }
 
+.main {
+  display: flex;
+  height: -webkit-fill-available;
+  justify-content: space-between;
+  font-family: 'Press Start 2P', cursive;'
+}
+
+.players {
+  margin-top: 2.5%;
+  margin-left: 3%;
+  width: 17%;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid white;
+  box-shadow: 0 0 20px #3F59F4;
+  text-shadow: 0 0 0.2px white;
+  border-radius: 5px;
+  padding: 0 30px 30px 30px;
+  margin-right: 3%;
+  text-align: center;
+  align-items: center;
+  height: 410px;
+}
+
+.p2info {
+  margin-top: 10%;
+}
+
+.grid-container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+.highscore {
+  margin-top: 2.5%;
+  margin-right: 3%;
+  width: 17%;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid white;
+  box-shadow: 0 0 20px #3F59F4;
+  text-shadow: 0 0 0.2px white;
+  border-radius: 5px;
+  padding: 0 30px 30px 30px;
+  margin-right: 3%;
+  text-align: center;
+  align-items: center;
+  height: 410px;
+}
+
+.splashContainer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.oversplash {
+  height: 150px;
+  width: calc(20*22px);
+  position: fixed;
+  left:34.8%;
+  top:20%;
+  background-color: black;
+  box-shadow: 0 0 15px red;
+  text-align: center;
+  border-radius: 20px;
+  border: 3px solid red;
+  /* visibility: hidden; */
+}
+
+.oversplash div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.oversplash .button {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.oversplash .button:hover {
+  border-radius: 5px;
+  text-shadow: 0 0 15px red;
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
 #grid {
   width: calc(20*22px);
   height: calc(20*22px);
-  margin: auto;
+  margin-top: 5%;
+  border: 3px solid white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #3F59F4;
+  text-shadow: 0 0 10px #3F59F4;
 }
+
 
 .snake {
   background-color: rgb(40, 191, 49);
   border: 2px solid rgb(17, 116, 30);
+  box-shadow: 0 0 10px white;
+}
+
+.snake2 {
+  background-color: rgb(18, 33, 240);
+  box-shadow: 0 0 10px white;
+}
+
+.snakehead-up{
+  background-image: url("snakehead.png");
+  transform: rotate(0deg);
+  box-shadow: 0 0 10px white;
+}
+
+.snakehead-down{
+  background-image: url("snakehead.png");
+  transform: rotate(180deg);
+  box-shadow: 0 0 10px white;
+}
+
+.snakehead-left{
+  background-image: url("snakehead.png");
+  transform: rotate(270deg);
+  box-shadow: 0 0 10px white;
+}
+
+.snakehead-right{
+  background-image: url("snakehead.png");
+  transform: rotate(90deg);
+  box-shadow: 0 0 10px white;
+}
+
+.apple {
+  background-color: rgb(201, 21, 21);
+  box-shadow: 0 0 15px rgb(255, 0, 0);
+}
+
+.special {
+  animation: flashy 3s infinite;
+}
+
+@keyframes flashy {
+  0% {
+    background-color: red;
+    box-shadow: 0 0 15px red;
+  }
+  15% {
+    background-color: orange;
+    box-shadow: 0 0 15px orange;
+  }
+  30% {
+    background-color: yellow;
+    box-shadow: 0 0 15px yellow;
+  }
+  45% {
+    background-color: green;
+    box-shadow: 0 0 15px green;
+  }
+  60% {
+    background-color: blue;
+    box-shadow: 0 0 15px blue;
+  }
+  75%{
+    background-color: indigo;
+    box-shadow: 0 0 15px indigo;
+  }
+  90%{
+    background-colour: violet;
+    box-shadow: 0 0 15px violet;
+  }
+  100% {
+    background-color: red;
+    box-shadow: 0 0 15px red;
+  }
 }
 
 #grid div {
   height: 20px;
   width: 20px;
   float: left;
-  border: 1px solid black;
+  border: 1px solid rgba(255,255,255,0.1)	;
   border-radius: 10%;
 }
+
+.gameover {
+  padding-top: 5%;
+  height: -webkit-fill-available;
+  border-bottom: 5px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Press Start 2P', cursive;'
+}
+
+#return-to-start1:hover {
+  box-shadow: 0 0 20px #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+#return-to-start2:hover {
+  box-shadow: 0 0 20px #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+  transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+}
+
+footer {
+  display: block;
+  font-family: 'Press Start 2P', cursive;'
+  color: white;
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+}
+
+
+/* .button {
+height: 50px;
+width: 200px;
+background-color: grey;
+border: 3px solid black;
+border-radius: 5px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 600;
+cursor: pointer;
+margin: 10px;
+} */
