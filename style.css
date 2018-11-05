@@ -550,4 +550,9 @@ footer {
   .vectro {
     font-size: 170px;
   }
+  .startScreen .buttonContainer .button{
+    font-size: 40px;
+    height: 90px;
+    width: 340px;
+  }
 }
