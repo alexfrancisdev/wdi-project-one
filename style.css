@@ -31,7 +31,7 @@ section:not(.startScreen) {
 .startScreen {
   background-color: black;
   height: 100ph;
-  /* background: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, rgba(255,255,255,0) 1px, rgba(255,255,255,0) 2px); */
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, rgba(255,255,255,0) 1px, rgba(255,255,255,0) 2px);
 }
 
 .vectro {
@@ -227,6 +227,10 @@ section:not(.startScreen) {
   margin-right: 3%;
   text-align: center;
   align-items: center;
+}
+
+.p1Start div .left {
+  margin: 0;
 }
 
 .left h2 {
@@ -539,17 +543,8 @@ footer {
   right: 5px;
 }
 
-
-/* .button {
-height: 50px;
-width: 200px;
-background-color: grey;
-border: 3px solid black;
-border-radius: 5px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-weight: 600;
-cursor: pointer;
-margin: 10px;
-} */
+@media screen and (max-device-width: 480px) {
+  #p2-menu {
+    display: none;
+  }
+}

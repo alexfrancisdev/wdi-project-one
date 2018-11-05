@@ -3,18 +3,21 @@ let snakeLength;
 let snakeDirection;
 let snakeX;
 let snakeY;
+let appleX;
+let appleY;
 let snake2X;
 let snake2Y;
 let snake2Length;
 let snake2Direction;
 // let refreshPaused;
 let gameMode;
+let computerPlayer;
 const grid = [];
 const gridHeight = 20;
 const gridWidth = 20;
 let score = 0;
 let score2 = 0;
-const $splashMessage = $('#splashMsg');
+// const $splashMessage = $('#splashMsg');
 const $playAgain = $('#playAgain');
 const deathSound = document.getElementById('deathSound');
 const bananaSound = document.getElementById('bananaSound');
@@ -171,10 +174,13 @@ function loadGame() {
 }
 
 function createApple() {
-  const appleX = Math.floor(Math.random() * gridWidth);
-  const appleY = Math.floor(Math.random() * gridHeight);
-
-  grid[appleX][appleY].apple = 1;
+  appleX = Math.floor(Math.random() * (gridWidth - 2) + 2);
+  appleY = Math.floor(Math.random() * (gridHeight - 2) + 2);
+  if (grid[appleY][appleX].snake > 0 || grid[appleY][appleX].snake2 > 0){
+    createApple();
+  } else {
+    grid[appleY][appleX].apple = 1;
+  }
 }
 
 function createSpecial() {
@@ -182,7 +188,7 @@ function createSpecial() {
   if(randomNum === 1){
     const specialX = Math.floor(Math.random() * gridWidth);
     const specialY = Math.floor(Math.random() * gridHeight);
-    grid[specialX][specialY].special = 1;
+    grid[specialY][specialX].special = 1;
   }
 }
 //startGame
@@ -200,7 +206,7 @@ function startGame(){
         grid[y][x].special = 0;
       }
     }
-    grid[snakeX][snakeY].snake = snakeLength;
+    grid[snakeY][snakeX].snake = snakeLength;
     createApple();
     createSpecial();
   } else {
@@ -222,8 +228,8 @@ function startGame(){
         grid[y][x].snake2 = 0;
       }
     }
-    grid[snakeX][snakeY].snake = snakeLength;
-    grid[snake2X][snake2Y].snake2 = snake2Length;
+    grid[snakeY][snakeX].snake = snakeLength;
+    grid[snake2Y][snake2X].snake2 = snake2Length;
     createApple();
     createSpecial();
   }
@@ -417,6 +423,7 @@ function gameRefresh(){
         }
       }
     }
+    computerMoves();
     setTimeout(gameRefresh, 250);
   }
 }
@@ -424,26 +431,30 @@ function gameRefresh(){
 function snakeUp() {
   if (snakeDirection !== 'down') {
     snakeDirection = 'up';
-    pixel.element.style.transform='rotate(0deg)';
   }
 }
 
 function snake2Up() {
   if (snake2Direction !== 'down') {
     snake2Direction = 'up';
+  }else{
+    console.log('forced right');
+    snake2Right();
   }
 }
 
 function snakeDown() {
   if (snakeDirection !== 'up') {
     snakeDirection = 'down';
-    pixel.element.style.transform='rotate(180deg)';
   }
 }
 
 function snake2Down() {
   if (snake2Direction !== 'up') {
     snake2Direction = 'down';
+  }else{
+    console.log('forced right');
+    snake2Right();
   }
 }
 
@@ -456,6 +467,9 @@ function snakeRight() {
 function snake2Right() {
   if (snake2Direction !== 'left') {
     snake2Direction = 'right';
+  }else{
+    console.log('forced down');
+    snake2Down();
   }
 }
 
@@ -468,6 +482,9 @@ function snakeLeft() {
 function snake2Left() {
   if (snake2Direction !== 'right') {
     snake2Direction = 'left';
+  }else{
+    console.log('forced down');
+    snake2Down();
   }
 }
 
@@ -494,3 +511,139 @@ window.addEventListener('keydown', function(e) {
     snake2Right();
   }
 });
+
+let distanceX;
+let distanceY;
+
+function appleDistance(){
+  distanceX = appleX - snake2X;
+  distanceY = appleY - snake2Y;
+}
+
+function computerMoves(){
+  appleDistance();
+  checkDirections();
+  console.log('AI X:', snake2X, 'AI Y:', snake2Y);
+  console.log('Apple X:', appleX, 'Apple Y:', appleY);
+  console.log('distanceX:', distanceX, 'distanceY:', distanceY );
+  if(distanceX < 0 && snake2Direction !== 'right' && left === true){
+    console.log('AI left');
+    AiMoveLeft();
+  }else if(distanceX > 0 && snake2Direction !== 'left' && right === true){
+    console.log('AI right');
+    AiMoveRight();
+  }else if(distanceY < 0 && snake2Direction !== 'down' && up === true){
+    console.log('AI up');
+    AiMoveUp();
+  }else if(distanceY > 0 && snake2Direction !== 'up' && down === true){
+    console.log('AI down');
+    AiMoveDown();
+  }
+}
+
+
+let right;
+let left;
+let up;
+let down;
+
+function checkRight(){
+  if (grid[snake2Y][snake2X + 1].snake === 0 && grid[snake2Y][snake2X + 1].snake2 === 0){
+    right = true;
+  } else {
+    right = false;
+  }
+}
+
+function checkLeft(){
+  if (grid[snake2Y][snake2X - 1].snake === 0 && grid[snake2Y][snake2X - 1].snake2 === 0){
+    left = true;
+  } else {
+    left = false;
+  }
+}
+
+function checkUp(){
+  if (grid[snake2Y - 1][snake2X].snake === 0 && grid[snake2Y - 1][snake2X].snake2 === 0){
+    up = true;
+  } else {
+    up = false;
+  }
+}
+function checkDown(){
+  if (grid[snake2Y + 1][snake2X].snake === 0 && grid[snake2Y + 1][snake2X].snake2 === 0){
+    down = true;
+  } else {
+    down = false;
+  }
+}
+
+function checkDirections(){
+  checkRight();
+  checkLeft();
+  checkUp();
+  checkDown();
+}
+
+function AiMoveUp(){
+  console.log('ai move up');
+  if (up === true && snake2Direction !== 'down'){
+    console.log('actually up');
+    snake2Direction = 'up';
+  } else if (right === true && snake2Direction !== 'left') {
+    console.log('actually right');
+    snake2Direction = 'right';
+  } else if (down === true && snake2Direction !== 'up') {
+    console.log('actually down');
+    snake2Direction = 'down';
+  } else {
+    console.log('actually left');
+    snake2Direction = 'left';
+  }
+}
+
+function AiMoveDown(){
+  console.log('ai move down');
+  if (down === true && snake2Direction !== 'up'){
+    console.log('actually down');
+    snake2Direction = 'down';
+  } else if (right === true && snake2Direction !== 'left') {
+    console.log('actually right');
+    snake2Direction = 'right';
+  } else if (up === true && snake2Direction !== 'down') {
+    console.log('actually up');
+    snake2Direction = 'up';
+  } else {
+    console.log('actually left');
+    snake2Direction = 'left';
+  }
+}
+
+function AiMoveLeft(){
+  console.log('ai move left');
+  if (left === true && snake2Direction !== 'right'){
+    console.log('actually left');
+    snake2Direction = 'left';
+  } else if (right === true && snake2Direction !== 'left') {
+    console.log('actually right');
+    snake2Direction = 'right';
+  } else if (down === true && snake2Direction !== 'up') {
+    console.log('actually down');
+    snake2Direction = 'down';
+  } else {
+    snake2Direction = 'up';
+  }
+}
+
+function AiMoveRight(){
+  console.log('ai move rigth');
+  if (right === true && snake2Direction !== 'left'){
+    snake2Direction = 'right';
+  } else if (left === true && snake2Direction !== 'right') {
+    snake2Direction = 'left';
+  } else if (down === true && snake2Direction !== 'up') {
+    snake2Direction = 'down';
+  } else {
+    snake2Direction = 'up';
+  }
+}
