@@ -1,2 +1,4 @@
-# wdi-project-one
-This is my first project - Snake
+# Javascript Snake
+<p align="center">
+  <img width="800" height="550" alt="Intro Screen" src="https://imgur.com/VpVIMOP">
+</p>
