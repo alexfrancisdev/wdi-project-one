@@ -42,12 +42,22 @@ Our brief required that we:
 
 ## Approach taken
 
-### Grid Layout
+### Rendering the game
 
-My first difficulty was working out out to create the grid that would be used to display my game. I decided that the simplest way to create this grid would be by using divs. I manually created a 5x5 grid as a proof-of-concept to check it would work, and it did. However for my game I wished to have a 20x20 grid, meaning that 400 divs would be required, an automated way of rendering the grid was needed.
+#### Grid Layout
+
+My first difficulty was working out to create the grid that would be used to display my game. I decided that the simplest way to create this grid would be by using divs. I manually created a 5x5 grid as a proof-of-concept to check it would work, and it did. However for my game I wished to have a 20x20 grid, meaning that 400 divs would be required, an automated way of rendering the grid was needed.
 
 To overcome this I created a function that would loop over the defined height of the grid to create 'rows', and then loop over the defined width of the grid to push 'pixels'(divs) into the rows.
 
+#### Displaying snake and apples
+
+To display the snake (and snakes in the case of the two player mode) a value of 'snake' is pushed into the array of divs. A function then runs a loop, checking each item in the array for a snake value. If the cell has a snake value and it matches the length of the then it is the front of the snake so gets the 'snakehead' class, otherwise the players chosen colour is applied to it. Similarly, if the cell has either and apple or special value it gets given the relevant class.
+
+Every time the game refreshes one is removed from all snake values, and a snake value matching the length of the snake is applied to the cell that is moving into.
+
 ### Functionality
 
-#### Displaying the snake and apples
+#### Gaining Points
+
+The player gains points by eating apples and collecting special tiles. An apple is created each time one is eaten and special tiles appear at random intervals.
