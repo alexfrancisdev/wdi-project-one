@@ -5,7 +5,7 @@
 
 [Play Snake on GitHub Pages](https://alexfrancisdev.github.io/wdi-project-one/)
 
-[View Snake on GitHub](https://github.com/alexfrancisdev/wdi-project-one
+[View Snake on GitHub](https://github.com/alexfrancisdev/wdi-project-one)
 
 
 ## Game instructions
