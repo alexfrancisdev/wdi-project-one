@@ -1,6 +1,6 @@
 # Snake
 <p align="center">
-  <img width="800" height="550" alt="Intro Screen" src="https://imgur.com/VpVIMOP.png">
+  <img width="800" alt="Snake Logo" src="./screenshots/logo.png">
 </p>
 
 [Play Snake on GitHub Pages](https://alexfrancisdev.github.io/wdi-project-one/)
