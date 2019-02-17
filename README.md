@@ -39,6 +39,12 @@ Our brief required that we:
   * GitHub
   * Git
 
+---
+
+## Gameplay
+
+
+---
 
 ## Approach taken
 
