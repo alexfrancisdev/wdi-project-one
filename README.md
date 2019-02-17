@@ -43,7 +43,17 @@ Our brief required that we:
 
 ## Gameplay
 
+#### Title and mode selection
 
+<p align="center">
+  <img width="800" alt="Landing" src="./screenshots/landing.png">
+</p>
+
+#### Colour Selection
+
+<p align="center">
+  <img width="800" alt="Colour Selection" src="./screenshots/color-select.png">
+</p>
 ---
 
 ## Approach taken
