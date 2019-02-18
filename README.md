@@ -52,7 +52,7 @@ Our brief required that we:
 #### Colour Selection
 
 <p align="center">
-  <img width="800" alt="Colour Selection" src="./screenshots/color-select.png">
+  <img width="800" alt="Colour Selection" src="./screenshots/color-select.gif">
 </p>
 ---
 
